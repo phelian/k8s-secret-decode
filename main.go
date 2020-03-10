@@ -30,8 +30,9 @@ func main() {
 	}
 
 	for k, v := range secret.Data {
-		result, err := base64.RawStdEncoding.DecodeString(v)
+		result, err := base64.StdEncoding.DecodeString(v)
 		if err != nil {
+			fmt.Println(err.Error())
 			continue
 		}
 		fmt.Printf("%s\n%s\n", k, string(result))
